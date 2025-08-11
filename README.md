@@ -63,9 +63,13 @@ Testable in Hoppscotch or any API client
 
 Method	Endpoint	Description
 GET	/api/v1/employees	Get all employees
+
 POST	/api/v1/employees	Add a new employee
+
 GET	/api/v1/employees/{id}	Get employee by ID
+
 PUT	/api/v1/employees/{id}	Update employee
+
 DELETE	/api/v1/employees/{id}	Delete employee
 
 Tools Used
