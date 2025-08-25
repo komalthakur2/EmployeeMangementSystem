@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.SpringBootRestAPI.entity.Employee;
 
@@ -50,4 +51,10 @@ public ResponseEntity<HttpStatus> deleteEmployeeById(@PathVariable Long id){
 		return new ResponseEntity<HttpStatus>(HttpStatus.NO_CONTENT);
 		
 	}
+
+@GetMapping("/employees/search")
+public List<Employee> searchEmployees(@RequestParam("name") String name) {
+    return eRepo.findByNameContainingIgnoreCase(name);
+}
+
 }
