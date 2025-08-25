@@ -8,6 +8,7 @@ import maleWorker from './male 2.png';
 
 const EmployeesList = ({ textStyle }) => {
   const [employees, setEmployees] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     init();
@@ -35,6 +36,22 @@ const EmployeesList = ({ textStyle }) => {
       });
   };
 
+  // 🔍 search employees
+  const handleSearch = () => {
+    if (searchTerm.trim() === "") {
+      init(); 
+      return;
+    }
+    employeeService.searchByName(searchTerm) 
+      .then(response => {
+        console.log("Search result:", response.data);
+        setEmployees(response.data);
+      })
+      .catch(error => {
+        console.error("Error while searching employees", error);
+      });
+  };
+
   const getEmployeePhoto = (employee) => {
     if (employee.gender === 'female') {
       return femaleWorker;
@@ -52,44 +69,66 @@ const EmployeesList = ({ textStyle }) => {
 
   return (
     <div className="container">
-      <h3 style={textStyle}><i>List of Employees</i></h3>
+      <h3 className="text-center" style={textStyle}><i>List of Employees</i></h3>
       <br />
-      <div>
-        <Link to="/add" className="btn btn-primary mb-3">Add Employee</Link>
+      <div className="d-flex justify-content-between mb-3">
+        <Link to="/add" className="btn btn-primary">Add Employee</Link>
+
+        {/* 🔍 Search box */}
+        <div className="input-group" style={{ width: "300px" }}>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search by name"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+         <button className="btn btn-outline-primary" onClick={handleSearch}>
+          Search
+          </button>
+
+
+        </div>
       </div>
 
       <div className="row">
-        {employees.map((employee) => (
-          <div className="col-md-4 mb-4" key={employee.id}>
-            <div className="card shadow-sm h-100 text-center p-3" style={cardStyle}>
-              <img
-                src={getEmployeePhoto(employee)}
-                alt="Employee"
-                className="rounded-circle mx-auto"
-                style={{
-                  width: '120px',
-                  height: '120px',
-                  objectFit: 'cover',
-                  border: '3px solid #ddd'
-                }}
-              />
-              <div className="card-body">
-                <h5 className="card-title" style={textStyle}>{employee.name}</h5>
-                <p className="card-text" style={textStyle}>📍 {employee.location}</p>
-                <p className="card-text" style={textStyle}>{employee.department}</p>
-                <div className="d-flex justify-content-center gap-2">
-                  <Link className="btn btn-info" to={`/employees/edit/${employee.id}`}>Update</Link>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => handleDelete(employee.id)}
-                  >
-                    Delete
-                  </button>
+        {employees.length === 0 ? (
+          <div className="text-center mt-4">
+            <h5 style={textStyle}>No employee found</h5>
+          </div>
+        ) : (
+          employees.map((employee) => (
+            <div className="col-md-4 mb-4" key={employee.id}>
+              <div className="card shadow-sm h-100 text-center p-3" style={cardStyle}>
+                <img
+                  src={getEmployeePhoto(employee)}
+                  alt="Employee"
+                  className="rounded-circle mx-auto"
+                  style={{
+                    width: '120px',
+                    height: '120px',
+                    objectFit: 'cover',
+                    border: '3px solid #ddd'
+                  }}
+                />
+                <div className="card-body">
+                  <h5 className="card-title" style={textStyle}>{employee.name}</h5>
+                  <p className="card-text" style={textStyle}>📍 {employee.location}</p>
+                  <p className="card-text" style={textStyle}>{employee.department}</p>
+                  <div className="d-flex justify-content-center gap-2">
+                    <Link className="btn btn-info" to={`/employees/edit/${employee.id}`}>Update</Link>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => handleDelete(employee.id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
