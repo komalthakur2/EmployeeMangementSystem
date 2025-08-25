@@ -20,6 +20,11 @@ const remove = id => {
     return httpClient.delete(`/employees/${id}`);
 }
 
+const searchByName = (name) => {
+    return httpClient.get(`/employees/search`, { params: { name } });
+}
+
+
 export default {
-    getAll,create,get,update,remove
+    getAll,create,get,update,remove,searchByName
 };
