@@ -1,83 +1,92 @@
-# Employee Management System
+🚀 Employee Management System
 
-A full-stack React application for employee data with CRUD operations.
+A full-stack React + Spring Boot application for managing employee data with complete CRUD operations.
 
-## Features
+✨ Features
 
-- Manage employees: Create, Read, Update, Delete.
-- Responsive React frontend built with React.js.
-- Backend REST API using Spring Boot and Java.
-- Data persistence with MySQL database.
-- API testing using Hoppscotch.
-- Development in VS Code and Spring Tool Suite.
+👥 Manage employees: Create, Read, Update, Delete
 
-## Tech Stack
+📱 Responsive React frontend built with React.js
 
-- **Frontend:** React.js, JavaScript  
-- **Backend:** Java, Spring Boot  
-- **Database:** MySQL  
-- **API Testing:** Hoppscotch  
-- **IDE:** VS Code, Spring Tool Suite  
+⚡ Spring Boot REST API backend
 
-## Getting Started
+💾 Data persistence with MySQL database
 
-### Prerequisites
+🔍 API testing with Hoppscotch
 
-- Node.js and npm installed  
-- Java 21  
-- Maven (or use Maven wrapper)  
-- MySQL installed and running  
+🛠️ Development using VS Code and Spring Tool Suite (STS)
 
-### Installation
+🛠️ Tech Stack
 
-1. Clone the repository:
+Frontend: React.js, JavaScript
 
-   ```bash
-   git clone https://github.com/komalthakur2/EmployeeMangementSystem.git
-   cd EmployeeMangementSystem
-Run the backend server:
+Backend: Java, Spring Boot
 
-bash
-Copy
-Edit
+Database: MySQL
+
+API Testing: Hoppscotch
+
+IDE: VS Code, Spring Tool Suite
+
+🚀 Getting Started
+✅ Prerequisites
+
+Node.js and npm installed
+
+Java 21
+
+Maven (or Maven Wrapper)
+
+MySQL installed and running
+
+⚙️ Installation
+
+Clone the repository
+
+git clone https://github.com/komalthakur2/EmployeeMangementSystem.git
+cd EmployeeMangementSystem
+
+
+Run the backend server
+
 cd backend
 ./mvnw spring-boot:run
-In a new terminal, run the frontend:
 
-bash
-Copy
-Edit
+
+Run the frontend (in a new terminal)
+
 cd ../frontend
 npm install
 npm start
-Open your browser and go to:
 
-arduino
-Copy
-Edit
-http://localhost:3000
-to access the React frontend.
 
-API Endpoints (Backend)
-Testable in Hoppscotch or any API client
+Open in browser:
+👉 http://localhost:3000
 
-Method	Endpoint	Description
-GET	/api/v1/employees	Get all employees
+📡 API Endpoints (Backend)
 
-POST	/api/v1/employees	Add a new employee
+Testable in Hoppscotch or any API client:
 
-GET	/api/v1/employees/{id}	Get employee by ID
+Method : Endpoint  Description
 
-PUT	/api/v1/employees/{id}	Update employee
+GET : /api/v1/employees	Get all employees
 
-DELETE	/api/v1/employees/{id}	Delete employee
+POST : /api/v1/employees	Add a new employee
 
-Tools Used
-Hoppscotch for API testing and debugging
+GET : /api/v1/employees/{id}	Get employee by ID
 
-VS Code for frontend and backend development
+PUT : /api/v1/employees/{id}	Update employee
 
-Spring Tool Suite for Spring Boot backend development
+DELETE : /api/v1/employees/{id}	Delete employee
 
-Author
-KOMAL KUMARI THAKUR
+🧰 Tools Used
+
+🧪 Hoppscotch → API testing & debugging
+
+💻 VS Code → Frontend & backend development
+
+🛠️ Spring Tool Suite (STS) → Spring Boot backend development
+
+👩‍💻 Author
+
+Komal Kumari Thakur
